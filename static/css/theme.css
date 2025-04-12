@@ -1,0 +1,45 @@
+/*
+ * Color scheme and theme variables
+ * Dark theme by default
+ */
+
+/* Navigation styles */
+nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    color: var(--foreground);
+}
+
+.nav-link:hover {
+    background: var(--background);
+    text-decoration: none;
+}
+
+.nav-link.active {
+    background: var(--primary);
+    color: var(--background);
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+th, td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background: var(--surface);
+    font-weight: 600;
+}

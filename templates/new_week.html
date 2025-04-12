@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
+{% endblock %}
+
+{% block title %}New Week{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Add New Week</h1>
+
+    <form method="POST">
+        <div class="form-group">
+            <label class="form-label">Week Number</label>
+            <input type="number" name="week_number" class="form-input" required>
+        </div>
+
+        <div class="form-tabs">
+            <div class="form-tab active" data-target="theory-tab">Theory</div>
+            <div class="form-tab" data-target="problems-tab">Problems</div>
+            <div class="form-tab" data-target="challenges-tab">Challenges</div>
+        </div>
+
+        <div class="form-tab-content active" id="theory-tab">
+            <div class="form-group">
+                <label class="form-label">Theory Content</label>
+                <textarea name="theory" class="form-input form-textarea" rows="12"></textarea>
+            </div>
+        </div>
+
+        <div class="form-tab-content" id="problems-tab">
+            <div class="problems-container">
+                <div class="problem-form">
+                    <div class="form-group">
+                        <label class="form-label">Problem Title</label>
+                        <input type="text" name="problem_titles[]" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Problem Content</label>
+                        <textarea name="problem_contents[]" class="form-input form-textarea" rows="6"
+                            required></textarea>
+                    </div>
+                    <button type="button" class="btn btn-secondary remove-problem-btn">Remove Problem</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary add-problem-btn">＋ Add Another Problem</button>
+        </div>
+
+        <div class="form-tab-content" id="challenges-tab">
+            <div class="challenges-container">
+                <div class="challenge-form">
+                    <div class="form-group">
+                        <label class="form-label">Challenge Title</label>
+                        <input type="text" name="challenge_titles[]" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Challenge Content</label>
+                        <textarea name="challenge_contents[]" class="form-input form-textarea" rows="6"
+                            required></textarea>
+                    </div>
+                    <button type="button" class="btn btn-secondary remove-challenge-btn">Remove Challenge</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary add-challenge-btn">＋ Add Another Challenge</button>
+        </div>
+
+        <div class="form-actions">
+            <a href="{{ url_for('courses.course_detail', course_id=course_id) }}" class="btn btn-secondary">
+                Cancel
+            </a>
+            <button type="submit" class="btn btn-primary">Add Week</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Add new problem form
+        document.querySelector('.add-problem-btn').addEventListener('click', function () {
+            const container = document.querySelector('.problems-container');
+            const newForm = container.querySelector('.problem-form').cloneNode(true);
+            // Clear input values in the new form
+            newForm.querySelectorAll('input, textarea').forEach(field => field.value = '');
+            container.appendChild(newForm);
+        });
+
+        // Add new challenge form
+        document.querySelector('.add-challenge-btn').addEventListener('click', function () {
+            const container = document.querySelector('.challenges-container');
+            const newForm = container.querySelector('.challenge-form').cloneNode(true);
+            // Clear input values in the new form
+            newForm.querySelectorAll('input, textarea').forEach(field => field.value = '');
+            container.appendChild(newForm);
+        });
+
+        // Remove problem form
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-problem-btn')) {
+                const form = e.target.closest('.problem-form');
+                // Only remove if there's more than one problem
+                if (document.querySelectorAll('.problem-form').length > 1) {
+                    form.remove();
+                }
+            }
+
+            if (e.target.classList.contains('remove-challenge-btn')) {
+                const form = e.target.closest('.challenge-form');
+                // Only remove if there's more than one challenge
+                if (document.querySelectorAll('.challenge-form').length > 1) {
+                    form.remove();
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

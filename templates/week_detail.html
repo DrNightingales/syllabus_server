@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}Week {{ week[2] }} Details{% endblock %}
+
+{% block content %}
+<div class="week-container">
+    <div class="week-header">
+        <h1>Week {{ week[2] }}</h1>
+
+        <form method="POST" class="progress-form">
+            <label class="progress-toggle">
+                <input type="checkbox" name="completed" {% if progress and progress[3]==1 %}checked{% endif %}>
+                <span>Mark as Completed</span>
+            </label>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+
+    <div class="week-sections">
+        {% if week[3].strip() %}
+        <section class="card">
+            <h2>Theory</h2>
+            <div class="markdown-content">
+                {{ week[3]|safe }}
+            </div>
+        </section>
+        {% endif %}
+
+        {% if week[4].strip() %}
+        <section class="card">
+            <h2>Problems</h2>
+            <div class="markdown-content">
+                {{ week[4]|safe }}
+            </div>
+        </section>
+        {% endif %}
+
+        {% if week[5].strip() %}
+        <section class="card">
+            <h2>Challenges</h2>
+            <div class="markdown-content">
+                {{ week[5]|safe }}
+            </div>
+        </section>
+        {% endif %}
+
+        {% if week[6].strip() %}
+        <section class="card">
+            <h2>Projects</h2>
+            <div class="markdown-content">
+                {{ week[6]|safe }}
+            </div>
+        </section>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

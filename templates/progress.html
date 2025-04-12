@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Progress Summary{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    {% block content %}
+    <div class="progress-container">
+        <h1>Progress Summary</h1>
+        <table>
+            <tr>
+                <th>Course ID</th>
+                <th>Week</th>
+                <th>Completed</th>
+            </tr>
+            {% for record in summary %}
+            <tr>
+                <td>{{ record[0] }}</td>
+                <td>{{ record[1] }}</td>
+                <td>{{ 'Yes' if record[2] == 1 else 'No' }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ url_for('courses.index') }}" class="btn">Back to Courses</a>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

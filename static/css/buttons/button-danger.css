@@ -1,0 +1,9 @@
+.btn-danger {
+    background: var(--danger);
+    color: var(--background);
+}
+
+.btn-danger:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+{% extends "base.html" %}
+
+{% block title %}New Supplementary Material{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Add Supplementary Material</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label class="form-label">Title</label>
+            <input type="text" name="title" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Content</label>
+            <textarea name="content" class="form-input form-textarea" rows="8" required></textarea>
+        </div>
+
+        <div class="form-actions">
+            <a href="{{ url_for('courses.course_detail', course_id=course_id) }}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Add Material</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+</html>

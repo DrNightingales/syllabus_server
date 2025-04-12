@@ -1,0 +1,89 @@
+@import url("buttons/button.css");
+/*
+ * Reusable UI components
+ * Buttons, cards, badges, etc.
+ */
+
+/* Card component - for content containers */
+.card {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+/* Button styles - updated for consistency */
+
+
+/* Progress badge */
+.progress-badge {
+    background: var(--primary);
+    color: var(--background);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+    display: inline-block;
+}
+
+/* Create Course Button - special variant */
+.create-course-btn {
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    background: var(--primary);
+    color: var(--background);
+    border: none;
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.create-course-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.create-course-btn:active {
+    transform: translateY(0);
+}
+
+/* Course List Item styles */
+.course-list {
+    list-style: none;
+}
+
+.course-item {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.course-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.course-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--foreground);
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.course-item a:hover {
+    background: rgba(122, 162, 247, 0.1);
+}
+
+.course-item a:active {
+    background: rgba(122, 162, 247, 0.2);
+}

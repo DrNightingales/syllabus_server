@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Syllabus Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>📚 Your Courses</h1>
+    <a href="{{ url_for('courses.new_course') }}" class="card create-course-btn">
+        ＋ Create New Course
+    </a>
+
+    <div class="card">
+        <ul class="course-list">
+            {% for course in courses %}
+            <li class="course-item">
+                <a href="{{ url_for('courses.course_detail', course_id=course[0]) }}">
+                    {{ course[1] }}
+                    <span class="progress-badge">
+                        {{ ((course_progress.get(course[0], 0)) * 100)|int }}% Complete
+                    </span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

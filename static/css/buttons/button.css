@@ -1,0 +1,44 @@
+@import 'button-primary.css';
+@import 'button-secondary.css';
+@import 'button-danger.css';
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+    line-height: 1.5;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+button.btn {
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0;
+    position: relative;
+    top: 0;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+.course-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.btn:active {
+    transform: translateY(0);
+}

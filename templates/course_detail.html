@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}{{ course[1] }}{% endblock %}
+
+{% block content %}
+<div class="course-header">
+    <div class="course-title-actions">
+        <h1>{{ course[1] }}</h1>
+        <div class="course-actions">
+            <a href="{{ url_for('courses.edit_course', course_id=course[0]) }}" class="btn btn-secondary">Edit</a>
+            <form method="POST" action="{{ url_for('courses.delete_course', course_id=course[0]) }}"
+                onsubmit="return confirm('Are you sure you want to delete this course?');" style="display: inline;">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+    <p class="course-description">{{ course[2] }}</p>
+</div>
+
+<div class="card">
+    <div class="section-header">
+        <h2>Weekly Modules</h2>
+        <a href="{{ url_for('weeks.new_week', course_id=course[0]) }}" class="btn btn-primary">
+            ＋ Add Week
+        </a>
+    </div>
+
+    <ul class="week-list">
+        {% for week in weeks %}
+        <li>
+            <a href="{{ url_for('courses.week_detail', course_id=course[0], week_number=week[2]) }}">
+                Week {{ week[2] }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card">
+    <div class="section-header">
+        <h2>Supplementary Materials</h2>
+        <a href="{{ url_for('extras.new_extra', course_id=course[0]) }}" class="btn btn-primary">
+            ＋ Add Material
+        </a>
+    </div>
+
+    <ul class="extra-list">
+        {% for extra in extras %}
+        <li>
+            <strong>{{ extra[2] }}</strong>
+            <p>{{ extra[3] }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

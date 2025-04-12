@@ -1,0 +1,59 @@
+/* 
+ * Base styles and layout structure
+ * Defines the core layout and global styles
+ */
+
+/* Root variables for theming */
+:root {
+    --background: #1a1b26;
+    --foreground: #a9b1d6;
+    --primary: #7aa2f7;
+    --surface: #24283b;
+    --border: #414868;
+    --danger: #f7768e;
+}
+
+/* Global reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    font-size: 1.1rem;
+    padding: 2rem;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Container for centering content */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header styles */
+header {
+    background: var(--surface);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Footer styles */
+footer {
+    margin-top: auto;
+    padding: 1rem 0;
+    text-align: center;
+    color: var(--border);
+}

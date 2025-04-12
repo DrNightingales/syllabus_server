@@ -1,0 +1,126 @@
+/*
+ * Form elements and form-specific components
+ */
+
+.form-container {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--foreground);
+    font-size: 1rem;
+}
+
+.form-textarea {
+    min-height: 200px;
+    resize: vertical;
+    font-family: monospace;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Tab styles for form sections */
+.form-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.form-tab {
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px 4px 0 0;
+    background: var(--surface);
+    color: var(--foreground);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    border-bottom: none;
+    font-weight: 600;
+}
+
+.form-tab:hover {
+    background: var(--background);
+}
+
+.form-tab.active {
+    background: var(--primary);
+    color: var(--background);
+    border-color: var(--border);
+}
+
+.form-tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.form-tab-content.active {
+    display: block;
+}
+
+/* Problem and Challenge form styles */
+.problems-container,
+.challenges-container {
+    margin-bottom: 1.5rem;
+}
+
+.problem-form,
+.challenge-form {
+    background: rgba(122, 162, 247, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.problem-form+.problem-form,
+.challenge-form+.challenge-form {
+    margin-top: 1.5rem;
+}
+
+.add-problem-btn,
+.add-challenge-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.remove-problem-btn,
+.remove-challenge-btn {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
