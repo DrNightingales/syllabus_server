@@ -1,3 +1,5 @@
 __pycache__
 syllabus_env
 *.db
+.continuerules
+generate_commit_msg.py
