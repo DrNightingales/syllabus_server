@@ -8,17 +8,20 @@
     <a href="{{ url_for('courses.new_course') }}" class="card create-course-btn">
         ＋ Create New Course
     </a>
-
     <div class="card">
         <ul class="course-list">
             {% for course in courses %}
             <li class="course-item">
-                <a href="{{ url_for('courses.course_detail', course_id=course[0]) }}">
-                    {{ course[1] }}
+                <a href="{{ url_for('courses.course_detail', course_id=course.id) }}">
+                    {{ course.title }}
                     <span class="progress-badge">
-                        {{ ((course_progress.get(course[0], 0)) * 100)|int }}% Complete
+                        {{course.progress}}% Complete
                     </span>
                 </a>
+            </li>
+            {% else %}
+            <li class="course-item">
+                <div> No courses found found </div>
             </li>
             {% endfor %}
         </ul>

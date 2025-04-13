@@ -1,5 +1,6 @@
 __pycache__
-syllabus_env
+.mypy_cache
+venv
 *.db
 .continuerules
 generate_commit_msg.py

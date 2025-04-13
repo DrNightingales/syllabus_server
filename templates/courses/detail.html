@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %} {{ course.title }} {% endblock %}
+
+{% block content %}
+<div class="course-header">
+    <div class="course-title-actions">
+        <h1>{{ course.title }}</h1>
+        <div class="course-actions">
+            <a href="{{ url_for('courses.edit_course', course_id=course_id) }}" class="btn btn-secondary">Edit</a>
+            <form method="POST" action="{{ url_for('courses.delete_course', course_id=course_id) }}"
+                onsubmit="return confirm('Are you sure you want to delete this course?');" style="display: inline;">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <p class="course-description">{{ course.description }}</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="section-header">
+        <h2>Weeks</h2>
+        <a href="{{ url_for('weeks.new_week', course_id=course_id) }}" class="btn btn-primary">
+            ＋ Add Week
+        </a>
+    </div>
+    <ul class="list-group">
+        {% for week in course.weeks %}
+        <li>
+            <a href="{{ url_for('weeks.week_detail', course_id=course_id, week_number=week.week_number) }}">
+                Week {{ week.week_number }}: {{ week.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="card">
+    <div class="section-header">
+        <h2>Projects</h2>
+        <a href="{{ url_for('projects.new_project', course_id=course_id) }}" class="btn btn-primary">
+            ＋ Add Project
+        </a>
+    </div>
+    <ul class="list-group">
+        {% for project in course.projects %}
+        <li>
+            <a href="{{ url_for('projects.project_detail', course_id=course_id, project_id=project.id) }}">
+                {{ project.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="card">
+    <div class="section-header">
+        <h2>Additional Materials</h2>
+        <a href="{{ url_for('extras.new_extra', course_id=course_id) }}" class="btn btn-primary">
+            ＋ Add Material
+        </a>
+        <ul class="list-group">
+            {% for extra in course.extras %}
+            <li>
+                <a href="{{ url_for('extras.extra_detail', course_id=course_id, extra_id=extra.id) }}">
+                    {{ extra.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endblock %}
