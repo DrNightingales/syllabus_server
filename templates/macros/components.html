@@ -1,0 +1,24 @@
+{% macro btn_a(text, variant = '', url = '#', classes = '') %}
+  <a href="{{ url }}" class="btn {% if variant %}btn-{{ variant }}{% endif %} {% if classes %}{{ classes }}{% endif %}">
+    {{ text }}
+  </a>
+{% endmacro %}
+
+{% macro form_tab_content(label_head = '', label_content = '', remove_btn_text = '', add_btn_text = '', id_prefix = '') %}
+  <div class="form-tab-content" id="{{ id_prefix }}-tab">
+    <div class="form-{{ id_prefix }}-container">
+      <div class="{{ id_prefix }}-form" id="{{ id_prefix }}-form">
+        <div class="form-group">
+          <label class="form-label">{{ label_head }}</label>
+          <input type="text" name="{{ id_prefix }}_titles[]" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">{{ label_content }}</label>
+          <textarea name="{{ id_prefix }}_contents[]" class="form-input form-textarea" rows="6"></textarea>
+        </div>
+        <button type="button" class="btn btn-secondary remove-{{ id_prefix }}-btn">{{ remove_btn_text }}</button>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary add-{{ id_prefix }}-btn">{{ add_btn_text }}</button>
+  </div>
+{% endmacro %}

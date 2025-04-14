@@ -40,7 +40,7 @@ class Project():
 class Week():
     '''Type definition for a course week'''
     theory: str
-    number: int
+    week_number: int
     completed: bool = False
     problems: list[Problem] = field(default_factory=list)
     challenges: list[Challenge] = field(default_factory=list)

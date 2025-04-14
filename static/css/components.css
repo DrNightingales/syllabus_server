@@ -52,24 +52,40 @@
     transform: translateY(0);
 }
 
-/* Course List Item styles */
-.course-list {
+/* Generic card list styles for reusable patterns */
+.card-list,
+.course-list,
+.week-list,
+.project-list,
+.extra-list {
     list-style: none;
 }
 
-.course-item {
+.card-item,
+.course-item,
+.week-item,
+.project-item,
+.extra-item {
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--border);
     padding-bottom: 1rem;
 }
 
-.course-item:last-child {
+.card-item:last-child,
+.course-item:last-child,
+.week-item:last-child,
+.project-item:last-child,
+.extra-item:last-child {
     margin-bottom: 0;
     border-bottom: none;
     padding-bottom: 0;
 }
 
-.course-item a {
+.card-item a,
+.course-item a,
+.week-item a,
+.project-item a,
+.extra-item a {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -80,10 +96,18 @@
     transition: all 0.2s ease;
 }
 
-.course-item a:hover {
+.card-item a:hover,
+.course-item a:hover,
+.week-item a:hover,
+.project-item a:hover,
+.extra-item a:hover {
     background: rgba(122, 162, 247, 0.1);
 }
 
-.course-item a:active {
+.card-item a:active,
+.course-item a:active,
+.week-item a:active,
+.project-item a:active,
+.extra-item a:active {
     background: rgba(122, 162, 247, 0.2);
 }

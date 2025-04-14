@@ -19,9 +19,7 @@ def create_course_in_main_db(title: str) -> int:
     Create a course entry in the main application database and return the new course ID.
 
     Args:
-        title: The title of the course
-        description: Optional description of the course
-
+        title(str): The title of the course
     Returns:
         The newly created course ID
     '''
@@ -173,15 +171,16 @@ def export_course_data(course_id: int) -> Course:
             weeks.append(Week(**week))
 
             # Get problems for this week
+            print(week['week_number'])
             cursor.execute(
                 "SELECT title, content, solved FROM problems WHERE week_number = ?",
-                (week['week_number']))
+                (week['week_number'],))
             weeks[-1].problems = [Problem(**p) for p in cursor.fetchall()]
 
             # Get challenges for this week
             cursor.execute(
                 "SELECT title, content, solved FROM challenges WHERE week_number = ?",
-                (week['week_number'],))
+                (int(week['week_number']),))
             weeks[-1].challenges = [Challenge(**c) for c in cursor.fetchall()]
 
         # Get projects
@@ -218,13 +217,13 @@ def import_course_data(course: Course) -> int:
         for week in course.weeks:
             cursor.execute(
                 "INSERT INTO weeks (week_number, theory, completed) VALUES (?, ?, ?)",
-                (week.number, week.theory, int(week.completed)))
+                (week.week_number, week.theory, int(week.completed)))
 
             # Insert problems
             for problem in week.problems:
                 cursor.execute(
                     "INSERT INTO problems (week_number, title, content, solved) VALUES (?, ?, ?, ?)",
-                    (week.number,
+                    (week.week_number,
                      problem.title,
                      problem.content,
                      int(problem.solved))
@@ -234,7 +233,7 @@ def import_course_data(course: Course) -> int:
             for challenge in week.challenges:
                 cursor.execute(
                     "INSERT INTO challenges (week_number, title, content, solved) VALUES (?, ?, ?, ?)",
-                    (week.number,
+                    (week.week_number,
                     challenge.title,
                     challenge.content,
                     int(challenge.solved)))

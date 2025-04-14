@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Syllabus Tracker{% endblock %}</title>
+    <title>
+      {% block title %}Syllabus Tracker{% endblock %}
+    </title>
     <!-- CSS imports -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
@@ -12,44 +14,42 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/markdown.css') }}">
     <!-- MathJax for equations -->
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     {% block extra_head %}{% endblock %}
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <header>
-            <h1 class="logo">📚 Syllabus Tracker</h1>
-            <nav>
-                <a href="{{ url_for('courses.index') }}"
-                    class="nav-link {% if request.path == url_for('courses.index') %}active{% endif %}">
-                    Home
-                </a>
-                <a href="{{ url_for('progress.progress_hub') }}"
-                    class="nav-link {% if request.path == url_for('progress.progress_hub') %}active{% endif %}">
-                    Progress
-                </a>
-            </nav>
-        </header>
+      <header>
+        <h1 class="logo">📚 Syllabus Tracker</h1>
+        <nav>
+          <a href="{{ url_for('courses.index') }}" class="nav-link {% if request.path == url_for('courses.index') %}active{% endif %}">
+            Home
+          </a>
+          <a href="{{ url_for('progress.progress_hub') }}" class="nav-link {% if request.path == url_for('progress.progress_hub') %}active{% endif %}">
+            Progress
+          </a>
+        </nav>
+      </header>
 
-        <main>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <div class="flash-messages">
-                {% for message in messages %}
-                <div class="flash-message">{{ message }}</div>
-                {% endfor %}
-            </div>
-            {% endif %}
-            {% endwith %}
+      <main>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash-messages">
+            {% for message in messages %}
+              <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% endwith %}
 
-            {% block content %}{% endblock %}
-        </main>
+        {% block content %}{% endblock %}
+      </main>
 
-        <footer>
-            <p>© 2023 Syllabus Tracker</p>
-        </footer>
+      <footer>
+        <p>© 2023 Syllabus Tracker</p>
+      </footer>
     </div>
-</body>
+  </body>
 
 </html>

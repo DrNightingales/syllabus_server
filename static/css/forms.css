@@ -88,8 +88,8 @@
     margin-bottom: 1.5rem;
 }
 
-.problem-form,
-.challenge-form {
+.problems-form,
+.challenges-form {
     background: rgba(122, 162, 247, 0.1);
     padding: 1.5rem;
     border-radius: 8px;
@@ -98,19 +98,19 @@
     position: relative;
 }
 
-.problem-form+.problem-form,
-.challenge-form+.challenge-form {
+.problems-forms,
+.challenges-form {
     margin-top: 1.5rem;
 }
 
-.add-problem-btn,
-.add-challenge-btn {
+.add-problems-btn,
+.add-challenges-btn {
     width: 100%;
     margin-top: 0.5rem;
 }
 
-.remove-problem-btn,
-.remove-challenge-btn {
+.remove-problems-btn,
+.remove-challenges-btn {
     width: 100%;
     margin-top: 1rem;
 }
