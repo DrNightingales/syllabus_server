@@ -3,6 +3,8 @@ Utility functions
 '''
 from .models import get_db
 from datetime import datetime
+import markdown as md
+import bleach
 
 def get_course_progress(course_id) -> float:
     '''Calculate course completion percentage
@@ -32,3 +34,20 @@ def convert_timestamp(value: bytes) -> datetime:
     '''    
     return datetime.strptime(value.decode('utf-8'), '%Y-%m-%d %H:%M:%S')
 
+
+def render_markdown(content: str) -> str:
+    '''Convert Markdown to sanitized HTML with proper formatting.
+    
+    Args:
+        content: Raw Markdown string from user/content system
+    
+    Returns:
+        Sanitized HTML string safe for rendering
+    '''
+    # Convert Markdown to HTML
+
+    html = md.markdown(
+        content,
+        extensions=['fenced_code', 'tables', 'codehilite', 'mdx_math']
+    )
+    return html

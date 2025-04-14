@@ -16,7 +16,9 @@
       </div>
     </div>
     <div class="card">
-      <p class="course-description">{{ course.description }}</p>
+      <div class="course-description markdown-content">
+        {{ course.description|markdown|safe }}
+      </div>
     </div>
   </div>
 
