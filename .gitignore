@@ -4,3 +4,6 @@ venv
 *.db
 .continuerules
 generate_commit_msg.py
+.vscode
+.mypy_cache
+*.pyc
